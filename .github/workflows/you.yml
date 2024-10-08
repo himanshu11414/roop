@@ -1,11 +1,11 @@
 name: CI Workflow 
 
 on:
- # [push, pull_request]
+  [push, pull_request]
 
 jobs:
   lint:
-   # runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
