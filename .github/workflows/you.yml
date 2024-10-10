@@ -43,9 +43,9 @@ jobs:
           sudo apt-get install -y python3-tk  # Install Tkinter
           pip3 install yt-dlp
 
-     # - name: Download YouTube video
-#        run: |
-       #   wget -O ".github/examples/youtube.mp4" "https://px10.genyoutube.online/mates/en/download?url=ZTREjvNyOeQ%2BrM2CUnF6Z9q8OyNSR0xs/bwe6C4sTJ4px0miEEYnhr8tdrgRQI%2B0lfBa2nL1ukcEYl9DOQ0XrUWHoTxVahkLQmfsM2UML5A09rTokCUhXWEJfBMErQiv2gF18gcZq/hO5coScFHLB%2BUCg51tkVxrp8v6l4iFdFAKEkH1wOWTL0MuUdMzxDtOCzsbkBpipkuZagIKgzal4A%3D%3D"
+      - name: Download YouTube video
+        run: |
+          wget -O ".github/examples/youtube.mp4" "https://videos.pexels.com/video-files/7963239/7963239-uhd_1440_2560_25fps.mp4"
 
       - name: Set up FFmpeg
         uses: FedericoCarboni/setup-ffmpeg@v2
@@ -55,7 +55,7 @@ jobs:
 
       - name: Run Python script
         run: |
-          python run.py -s ".github/examples/runningmaneh.png" -t ".github/examples/5120413-hd_1080_1920_25fps.mp4" -o ".github/examples/output.mp4" --keep-frames --keep-fps --temp-frame-quality 1 --output-video-quality 1 --execution-provider cpu --execution-threads 1 --frame-processor face_swapper
+          python run.py -s ".github/examples/runningmaneh.png" -t ".github/examples/youtube.mp4" -o ".github/examples/output.mp4" --keep-frames --keep-fps --temp-frame-quality 1 --output-video-quality 1 --execution-provider cpu --execution-threads 1 --frame-processor face_swapper
 
 
       # Uncomment the following if you want to compare videos using PSNR
