@@ -1,4 +1,4 @@
-name: CI Workflow 
+name: CI Workflow
 
 on:
   [push, pull_request]
@@ -66,10 +66,14 @@ jobs:
         run: |
            ffmpeg -i .github/examples/output.mp4 -vf "scale=1080:1920,setsar=1" -c:a copy .github/examples/output_hd.mp4
 
-      - name: Upload processed videos as artifacts
+      - name: Upload output video as artifact
         uses: actions/upload-artifact@v3
         with:
-          name: processed-videos
-          path: |
-            .github/examples/output.mp4
-            .github/examples/output_hd.mp4
+          name: output-video
+          path: .github/examples/output.mp4
+
+      - name: Upload HD output video as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: output-hd-video
+          path: .github/examples/output_hd.mp4
