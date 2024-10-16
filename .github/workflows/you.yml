@@ -57,7 +57,6 @@ jobs:
         run: |
           python run.py -s ".github/examples/runningmaneh.png" -t ".github/examples/youtube.mp4" -o ".github/examples/output.mp4" --keep-frames --keep-fps --temp-frame-quality 1 --output-video-quality 1 --execution-provider cpu --execution-threads 1 --frame-processor face_swapper
 
-
       # Uncomment the following if you want to compare videos using PSNR
       # - name: Compare videos using PSNR (Optional)
       #   run: ffmpeg -i .github/examples/snapshot.mp4 -i .github/examples/output.mp4 -filter_complex psnr -f null -
@@ -67,8 +66,10 @@ jobs:
         run: |
            ffmpeg -i .github/examples/output.mp4 -vf "scale=1080:1920,setsar=1" -c:a copy .github/examples/output_hd.mp4
 
-      - name: Upload processed video as artifact
+      - name: Upload processed videos as artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: processed-video
-          path: .github/examples/output.mp4
+          name: processed-videos
+          path: |
+            .github/examples/output.mp4
+            .github/examples/output_hd.mp4
